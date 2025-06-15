@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spells</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="base-theme spells-theme">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <h1 class="page-header">Spells</h1>
+
+    <form method="GET" class="search-form">
+      <input type="text" name="search" placeholder="Search Spells..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } else { %>
+      <div class="card-grid">
+        <% data.forEach(spell => { %>
+          <div class="card">
+            <h2><%= spell.name %></h2>
+            <p><strong>Level:</strong> <%= spell.level %></p>
+            <p><strong>School:</strong> <%= spell.school %></p>
+            <p><strong>Casting Time:</strong> <%= spell.castingTime %></p>
+            <p><strong>Range:</strong> <%= spell.range %></p>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

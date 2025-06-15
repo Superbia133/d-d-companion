@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D&D Companion</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="base-theme <%= themeClass || '' %>">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <%- include(content) %>
+  </main>
+</body>
+</html>

@@ -1,15 +1,45 @@
-<!-- views/npc.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NPC Generator</title>
-  <script defer src="/js/npc-generator.js"></script>
+  <title>NPCs</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
-<body>
-  <h1>NPC Generator</h1>
-  <button id="generate-btn">Generate NPC</button>
-  <div id="npc-output" style="margin-top: 1em;"></div>
+<body class="base-theme npc-theme">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <h1 class="page-header">NPCs</h1>
+
+    <form method="GET" class="search-form">
+      <input type="text" name="search" placeholder="Search NPCs..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } else { %>
+      <div class="card-grid">
+        <% data.forEach(npc => { %>
+          <div class="card">
+            <h2><%= npc.name %></h2>
+            <p><strong>Race:</strong> <%= npc.race %></p>
+            <p><strong>Occupation:</strong> <%= npc.occupation %></p>
+            <p><strong>Location:</strong> <%= npc.location %></p>
+            <p><strong>Demeanor:</strong> <%= npc.demeanor %></p>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
 </body>
 </html>

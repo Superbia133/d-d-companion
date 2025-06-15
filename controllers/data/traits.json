@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Elda Whisperwind",
+    "race": "Elf",
+    "occupation": "Healer",
+    "trait": "Always speaks in riddles"
+  },
+  {
+    "name": "Brom Ironfist",
+    "race": "Dwarf",
+    "occupation": "Blacksmith",
+    "trait": "Laughs too loud"
+  },
+  {
+    "name": "Sera Vane",
+    "race": "Human",
+    "occupation": "Spy",
+    "trait": "Never tells the full truth"
+  }
+]

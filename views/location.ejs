@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Locations</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="base-theme locations-theme">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <h1 class="page-header">Locations</h1>
+
+    <form method="GET" class="search-form">
+      <input type="text" name="search" placeholder="Search Locations..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } else { %>
+      <div class="card-grid">
+        <% data.forEach(loc => { %>
+          <div class="card">
+            <h2><%= loc.name %></h2>
+            <p><strong>Type:</strong> <%= loc.type %></p>
+            <p><strong>Region:</strong> <%= loc.region %></p>
+            <p><strong>Known For:</strong> <%= loc.knownFor %></p>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

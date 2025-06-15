@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monsters</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="base-theme monsters-theme">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <h1 class="page-header">Monster Lookup</h1>
+
+    <form method="GET" action="/monsters" class="search-form">
+      <input type="text" name="search" placeholder="Search by name..." value="<%= search || '' %>" />
+      <select name="type">
+        <option value="">All Types</option>
+        <% 
+          const types = [...new Set(monsters.map(m => m.type))].sort();
+          types.forEach(type => { 
+        %>
+          <option value="<%= type %>" <%= type === selectedType ? 'selected' : '' %>><%= type %></option>
+        <% }); %>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="card-grid">
+      <% monsters.forEach(monster => { %>
+        <div class="card">
+          <h2><%= monster.name %></h2>
+          <p><strong>CR:</strong> <%= monster.challenge_rating %></p>
+          <p><strong>Type:</strong> <%= monster.type %></p>
+        </div>
+      <% }); %>
+    </div>
+
+    <div class="pagination">
+      <% if (page > 1) { %>
+        <a class="page-link" href="/monsters?page=<%= page - 1 %><%= search ? '&search=' + search : '' %><%= selectedType ? '&type=' + selectedType : '' %>">← Previous</a>
+      <% } %>
+      <% if (next) { %>
+        <a class="page-link" href="/monsters?page=<%= next %><%= search ? '&search=' + search : '' %><%= selectedType ? '&type=' + selectedType : '' %>">Next →</a>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

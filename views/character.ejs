@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Characters</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="base-theme characters-theme">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/npc">NPCs</a></li>
+      <li><a href="/characters">Characters</a></li>
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/spells">Spells</a></li>
+      <li><a href="/locations">Locations</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+    <h1 class="page-header">Characters</h1>
+
+    <form method="GET" class="search-form">
+      <input type="text" name="search" placeholder="Search Characters..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } else { %>
+      <div class="card-grid">
+        <% data.forEach(character => { %>
+          <div class="card">
+            <h2><%= character.name %></h2>
+            <p><strong>Class:</strong> <%= character.class %></p>
+            <p><strong>Level:</strong> <%= character.level %></p>
+            <p><strong>Race:</strong> <%= character.race %></p>
+            <p><strong>Background:</strong> <%= character.background %></p>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>
